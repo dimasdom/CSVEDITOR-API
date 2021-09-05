@@ -1,3 +1,5 @@
+using CSVEDITOR.Models.Context;
+using CSVEDITOR.Models.User;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -7,9 +9,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using System;
-using CSVEDITOR.Models.Context;
-using CSVEDITOR.Models.User;
 namespace CSVEDITOR
 {
     public class Startup

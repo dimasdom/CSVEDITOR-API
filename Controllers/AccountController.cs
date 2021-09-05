@@ -24,7 +24,7 @@ namespace CSVEDITOR.Controllers
             _signInManager = signInManager;
         }
 
-        
+
         [HttpPost("Login")]
 
         public async Task<ActionResult> Login(LoginDTOs loginDTOs)
@@ -36,10 +36,10 @@ namespace CSVEDITOR.Controllers
                 return Ok();
             }
             return NotFound("Ivalid Data"); ;
-            
-            
+
+
         }
-        
+
         [HttpPost("Register")]
         public async Task<ActionResult<UserModel>> Register(RegisterDTOs registerDTOs)
         {
@@ -55,7 +55,7 @@ namespace CSVEDITOR.Controllers
                 return newUser;
             }
             return NotFound();
-            
+
         }
 
         [Authorize]

@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace CSVEDITOR.Controllers
@@ -45,7 +44,7 @@ namespace CSVEDITOR.Controllers
         }
 
 
-       
+
 
         [HttpPost("Edit")]
         public async Task<ActionResult<List<TransactionModel>>> Edit(TransactionModel transaction)
@@ -63,7 +62,7 @@ namespace CSVEDITOR.Controllers
 
         }
 
-        
+
 
 
         [HttpPost("Create")]
@@ -112,8 +111,8 @@ namespace CSVEDITOR.Controllers
             //Details in SearchTransactionByClientNameHandler
             //Getting transaction list where client name coincided
             var result = await _mediator.Send(command);
-            
-            return result ;
+
+            return result;
         }
         [HttpPost("Filter")]
         public async Task<ActionResult<List<TransactionModel>>> Filter(FilterDTOs filterDTOs)
@@ -125,7 +124,7 @@ namespace CSVEDITOR.Controllers
             //Detail in FilterTransactionsByStatusAndTypeHandler
             var result = await _mediator.Send(command);
             //Getting new transaction list 
-            
+
             return result;
         }
         [HttpPost("Export")]
@@ -155,7 +154,7 @@ namespace CSVEDITOR.Controllers
                     //Checked checkbox is "on"
                     //Checking wich columns will be exported 
 
-                    worksheet.Cell(1, 1).Value = exportDTOs.IdBool  ? "TransactionId" : "";
+                    worksheet.Cell(1, 1).Value = exportDTOs.IdBool ? "TransactionId" : "";
                     worksheet.Cell(1, 2).Value = exportDTOs.StatusBool ? "Status" : "";
                     worksheet.Cell(1, 3).Value = exportDTOs.TypeBool ? "Type" : "";
                     worksheet.Cell(1, 4).Value = exportDTOs.ClientBool ? "Client" : "";
@@ -165,19 +164,19 @@ namespace CSVEDITOR.Controllers
                     {
                         worksheet.Cell(index + 1, 1).Value =
                             //Checking which data will be puted into cells
-                            exportDTOs.IdBool  ?
+                            exportDTOs.IdBool ?
                         transactions[index - 1].TransactionId : "";
                         worksheet.Cell(index + 1, 2).Value =
-                            exportDTOs.StatusBool   ?
+                            exportDTOs.StatusBool ?
                         transactions[index - 1].Status : "";
                         worksheet.Cell(index + 1, 3).Value =
-                            exportDTOs.TypeBool   ?
+                            exportDTOs.TypeBool ?
                         transactions[index - 1].Type : "";
                         worksheet.Cell(index + 1, 4).Value =
-                            exportDTOs.ClientBool   ?
+                            exportDTOs.ClientBool ?
                         transactions[index - 1].ClientName : "";
                         worksheet.Cell(index + 1, 5).Value =
-                            exportDTOs.AmountBool   ?
+                            exportDTOs.AmountBool ?
                         transactions[index - 1].Amount : "";
                     }
                     //Creating memory stream for saving file data 
